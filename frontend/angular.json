@@ -58,6 +58,13 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "ssl": true,
+            "sslKey": "/data/certs/ssl/private-key.key",
+            "sslCert": "/data/certs/ssl/sslCert.crt",
+            "port": 9499,
+            "browserTarget": "frontend:build"
+          },
           "configurations": {
             "production": {
               "browserTarget": "frontend:build:production"
