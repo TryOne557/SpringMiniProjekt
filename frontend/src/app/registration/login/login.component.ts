@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
       document.location.protocol +
       '//' +
       document.location.hostname +
-      ':8081/api/'
+      ':9499/api/'
     );
   }
 }

@@ -7,8 +7,9 @@ import {SignupComponent} from "./registration/signup/signup.component";
 import {ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import {MatIconModule} from "@angular/material/icon";
-import {RouterOutlet} from "@angular/router";
+import {RouterLink, RouterOutlet} from "@angular/router";
 import {MatToolbarModule} from "@angular/material/toolbar";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -22,7 +23,9 @@ import {MatToolbarModule} from "@angular/material/toolbar";
     MatInputModule,
     MatIconModule,
     RouterOutlet,
-    MatToolbarModule
+    MatToolbarModule,
+    RouterLink,
+    HttpClientModule
 
   ],
   providers: [],
