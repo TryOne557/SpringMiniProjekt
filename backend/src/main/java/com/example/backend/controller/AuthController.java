@@ -1,24 +1,24 @@
 package com.example.backend.controller;
 
-import com.social.dailylink.global.GlobalStrings;
-import com.social.dailylink.global.ProfilePictureType;
-import com.social.dailylink.model.ERole;
-import com.social.dailylink.model.Role;
-import com.social.dailylink.model.User;
-import com.social.dailylink.payload.request.LoginRequest;
-import com.social.dailylink.payload.request.SignupRequest;
-import com.social.dailylink.payload.response.JwtResponse;
-import com.social.dailylink.repository.RoleRepository;
-import com.social.dailylink.repository.UserRepository;
-import com.social.dailylink.security.jwt.JwtUtils;
-import com.social.dailylink.security.services.UserDetailsImpl;
-import jakarta.validation.Valid;
+import com.example.backend.model.Role;
+import com.example.backend.global.GlobalStrings;
+import com.example.backend.model.ERole;
+import com.example.backend.model.Role;
+import com.example.backend.model.User;
+import com.example.backend.payload.request.LoginRequest;
+import com.example.backend.payload.request.SignupRequest;
+import com.example.backend.payload.response.JwtResponse;
+import com.example.backend.repository.RoleRepository;
+import com.example.backend.repository.UserRepository;
+import com.example.backend.security.jwt.JwtUtils;
+import com.example.backend.security.services.UserDetailsImpl;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -28,12 +28,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 @RestController
+@EnableWebSecurity
 @RequestMapping("/api/auth")
 @Log4j2
 public class AuthController {
@@ -92,7 +94,7 @@ public class AuthController {
         // Create new user's account
         User user = new User(signUpRequest.username(),
                 signUpRequest.email(),
-                encoder.encode(signUpRequest.password()), GlobalStrings.getDefaultProfilePictureUrl(ProfilePictureType.CAT));
+                encoder.encode(signUpRequest.password()));
 
         Set<String> strRoles = signUpRequest.roles();
         Set<Role> roles = new HashSet<>();

@@ -1,8 +1,9 @@
 package com.example.backend.model;
 
-
+import com.example.backend.generic.AbstractEntity;
 import com.example.backend.global.GlobalStrings;
 import jakarta.persistence.*;
+
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 
